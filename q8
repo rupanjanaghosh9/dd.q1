@@ -1,0 +1,7 @@
+SELECT  m.customer_id, COUNT(DISTINCT(s.product_id)), SUM(m.price) as spends
+FROM sales as s
+JOIN members as mm  ON s.customer_id = mm.customer_id
+JOIN menu as m
+ON s.product_id = m.product_id
+WHERE s.order_date < mm.join_date
+GROUP BY mm.customer_id;
