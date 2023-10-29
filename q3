@@ -1,6 +1,6 @@
 SELECT s.customer_id, MIN(order_date), m.product_name
-FROM sales  s
-INNER JOIN menu m
+FROM dannys_diner.sales  s
+INNER JOIN dannys_diner_menu m
 ON s.product_id = m.product_id
 GROUP BY s.customer_id, m.product_name,s.order_date
 ORDER BY s.order_date ASC
