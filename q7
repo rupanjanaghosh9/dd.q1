@@ -1,0 +1,10 @@
+SELECT MAX(s.order_date) AS lastdate,m.product_name,s.customer_id
+from dannys_diner.sales s
+join dannys_diner.menu m
+on s.product_id=m.product_id
+where s.order_date<'2021-01-07' 
+AND s.customer_id IN ('A','B')
+GROUP BY m.product_name ,s.customer_id
+ORDER BY s.customer_id ASC 
+
+;
