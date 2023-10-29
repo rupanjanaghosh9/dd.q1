@@ -1,4 +1,4 @@
 select s.customer_id, 
 count(distinct (s.order_date)) 
 from dannys_diner.sales s
-group by customer_id,
+group by customer_id;
