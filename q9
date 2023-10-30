@@ -1,7 +1,7 @@
 SELECT s.customer_id ,
 sum(CASE 
     when s.product_id= 1 
-    then price*20 else 10*m.price 
+    then m.price*20 else 10*m.price 
     END)
 as points
 from dannys_diner.sales s
