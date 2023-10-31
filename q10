@@ -1,0 +1,15 @@
+
+SELECT customer_id, SUM(points) AS total_points
+FROM ( SELECT s.customer_id, s.order_date, m.price,
+           CASE
+           WHEN s.order_date <= DATE_ADD(mem.join_date, INTERVAL 7 DAY) THEN 2 * m.price
+           ELSE m.price
+           END AS points
+  FROM dannys_diner.sales s
+  JOIN dannys_diner.menu m ON s.product_id = m.product_id
+  JOIN members mem ON s.customer_id = mem.customer_id
+  WHERE s.order_date >= mem.join_date
+  AND s.order_date <= '2021-01-31'
+) AS Data
+WHERE customer_id IN ('A', 'B')
+GROUP BY customer_id;
